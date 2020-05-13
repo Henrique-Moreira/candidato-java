@@ -13,7 +13,7 @@ public class Programa {
 		int escolaridade, experiencia;
 		char viajar, habilitacao;
 		
-		int esc = 0, exp = 0;
+		int esc = 0, exp = 0, casos = 0;
 		
 		System.out.println("Qual sua escolaridade?");
 		System.out.println("1) Ensino Fundamental");
@@ -22,6 +22,7 @@ public class Programa {
 		System.out.println("4) Pós-Graduação");
 		System.out.print("Digite uma opção: ");
 		escolaridade = sc.nextInt();
+		System.out.println();
 		
 		System.out.print("Você tem quantos anos de experiência profissional? ");
 		experiencia = sc.nextInt();
@@ -29,6 +30,7 @@ public class Programa {
 		viajar = sc.next().charAt(0);
 		System.out.print("Você tem habilitação de motorista (S/N)? ");
 		habilitacao = sc.next().charAt(0);
+		System.out.println();
 		
 		if (escolaridade == 1) {
 			esc = 10;
@@ -59,6 +61,27 @@ public class Programa {
 		
 		System.out.println("Pontos por escolaridade: " + esc);
 		System.out.println("Pontos por experiência: " + exp);
+		System.out.println();
+		
+		System.out.println("Você está habilitado para o(s) seguinte(s) cargo(s)");
+		if (esc >= 20 && habilitacao == 'S') {
+			System.out.println("ASSISTENTE");
+			casos = casos + 1;
+		}
+		if (esc >= 30 && exp >= 20) {
+			System.out.println("GERENTE");
+			casos = casos + 1;
+		}
+		if (exp >= 5 && viajar == 'S' && esc >= 30) {
+			System.out.println("ANALISTA");
+			casos = casos + 1;
+			
+		}
+		if (casos == 0) {
+			System.out.println("Infelizmente seu perfil não atende a empresa");
+		}
+		
+		
 		sc.close();
 	}
 
